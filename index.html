@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Titanic Shiny App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Titanic Shiny App">
+  <meta name="author" content="Diogo Aurelio">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Titanic Shiny App</h1>
+    <h2>Developing Data Products Coursera MOOC, Johns Hopkins University</h2>
+    <p>Diogo Aurelio<br/>Data Science enthusiast</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Agenda</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background/Motivation</li>
+<li>Code for plots</li>
+<li>Guidelines to reproduce locally</li>
+<li>For more information</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Background/Motivation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>These are the files produced during a homework assignment of Coursera&#39;s MOOC Developing Data Products from Johns Hopkins University, where students could pick any dataset, and should produce a web app hosted on SaaS platform from RStudio shinyapss.io.</p>
+
+<p>The data set that I choose was from Kaggle&#39;s Titanic Challenge, since this is a starting point for many Machine Learning enthusiasts. </p>
+
+<p>The materials can be found in:</p>
+
+<p>Web app: <a href="https://dpaurelio.shinyapps.io/dpaurelio/">https://dpaurelio.shinyapps.io/dpaurelio/</a></p>
+
+<p>GitHub Repo: <a href="https://github.com/diogoaurelio/titanicShinyApp">https://github.com/diogoaurelio/titanicShinyApp</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Code for plots</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>ggplot 2 Library was used for the plotting. Here is the code for a static view of the default plot that is rendered on the web app:</p>
+
+<pre><code class="r">library(ggplot2)
+trainData &lt;- read.csv(
+url(&quot;http://s3-eu-west-1.amazonaws.com/dpadata/dataScience/train.csv&quot;))
+g &lt;- ggplot(trainData, aes(Age, Pclass))
+g + geom_point(aes(color=Sex)) + facet_grid(Survived ~.)
+</code></pre>
+
+<pre><code>## Warning: Removed 125 rows containing missing values (geom_point).
+## Warning: Removed 52 rows containing missing values (geom_point).
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Guidelines to reproduce locally</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Guidelines to reproduce this project locally on your PC</p>
+
+<p>To run locally this App on your computer you do NOT need to fork this repo. Please follow these instructions:</p>
+
+<ol>
+<li><p>Install the necessary packages to run RStudio&#39;s Shiny Server locally. Please view the well documented requirements in the getting started page: <a href="http://shiny.rstudio.com/articles/shinyapps.html">http://shiny.rstudio.com/articles/shinyapps.html</a></p></li>
+<li><p>Run the following command in the RStudio:</p>
+
+<p>runGitHub( &quot;titanicShinyApp&quot;, &quot;diogoaurelio&quot;)</p></li>
+</ol>
+
+<p>Finito.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>For more information</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For more information about the several MOOCs comprised in this Specialization, please visit:
+<a href="https://www.coursera.org/specialization/jhudatascience/">https://www.coursera.org/specialization/jhudatascience/</a></p>
+
+<p>For more information about RStudio Shinyapps.io visit:
+<a href="http://shiny.rstudio.com/articles/shinyapps.html">http://shiny.rstudio.com/articles/shinyapps.html</a></p>
+
+<p>For more information about Kaggle Titanic challenge visit:
+<a href="https://www.kaggle.com/c/titanic-gettingStarted">https://www.kaggle.com/c/titanic-gettingStarted</a></p>
+
+<p>Last but not least, if you are getting started with this challenge and R, here is a great tutorial from Trevor Stephens that inspired me to create this repo:
+<a href="http://trevorstephens.com/post/72916401642/titanic-getting-started-with">http://trevorstephens.com/post/72916401642/titanic-getting-started-with</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Last notes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Thanks you! 
+Hope this might help you in starting out down the awesome data science and Machine Learning path.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Agenda'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Background/Motivation'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Code for plots'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Guidelines to reproduce locally'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='For more information'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Last notes'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
